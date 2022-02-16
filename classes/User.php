@@ -1,6 +1,7 @@
 <?php
 
     require_once __DIR__ .'/Card.php';
+    // require_once __DIR__ .'/UserType.php';
     class User
     {
         protected $name;
