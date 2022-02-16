@@ -1,6 +1,10 @@
 <?php
+
+    require_once __DIR__ . "/../traits/Discount.php";
+
     class Product
     {
+        use Discount;
         protected $name;
         protected $brand;
         protected $model;
@@ -81,9 +85,13 @@
         /**
          * Get the value of price
          */ 
-        public function getPrice()
+        public function getPrice($level, $discount)
         {
-                return $this->price;
+            if ($level) {
+                $this->price = $this->price * ((100 - $discount) / 100);
+            } 
+
+            return $this->price;
         }
 
         /**
@@ -91,7 +99,7 @@
          *
          * @return  self
          */ 
-        public function setPrice($price)
+        public function setPrice(float $price)
         {
                 $this->price = $price;
 
